@@ -11,12 +11,12 @@ package demoherencia;
  */
 public class CuentaBancaria {
     private int numeroDeCuenta;
-    private String cliente;
+    private Cliente cliente;
     private double saldo;
     
-    public CuentaBancaria (int numeroDeCuenta, String cliente) {
+    public CuentaBancaria (int numeroDeCuenta, String nombre, String apellido) {
         this.numeroDeCuenta = numeroDeCuenta;
-        this.cliente = cliente;
+        this.cliente = new Cliente (nombre, apellido);
         this.saldo = 0.0;
     }
     
@@ -24,16 +24,15 @@ public class CuentaBancaria {
     return saldo;
     }
     
-    private void NumeroDeCuenta (int numeroDeCuenta) {
+    private void getNumeroDeCuenta (int numeroDeCuenta) {
         this.numeroDeCuenta = numeroDeCuenta;
     }
     
-    private void clinete (String cliente) {
-        this.cliente = cliente;
+    private void getCliente (String cliente) {
+        //this.cliente = cliente;
     }
     
-    
-    public boolean depositar (double cantidad) {
+    public boolean Depositar (double cantidad) {
         boolean seRealizoDeposito;
         if (cantidad > 0.0) {
             saldo = saldo + cantidad;
@@ -45,7 +44,7 @@ public class CuentaBancaria {
         return seRealizoDeposito;
     }
     
-    public boolean retirar (double cantidad) {
+    public boolean Retirar (double cantidad) {
         boolean seRealizoRetiro;
         if (cantidad <= getSaldo()) {
             saldo = saldo - cantidad;

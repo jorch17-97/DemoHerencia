@@ -1,7 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Jorge AntonioNicolas Morales
+ * 15470297
+ * 15 de abril de 2016
+ * Programacion Orientada a Objetos
  */
 package demoherencia;
 import java.util.Scanner;
@@ -18,25 +19,18 @@ public class Main {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         
-        System.out.println("Hola bien venido, que accion desea realizar");
-            System.out.println("1 = Cuenta Bancaria");
-            System.out.println("2 = Cuenta de Ahorro");
-            System.out.println("3 = Cuenta de Cheques");
-            int cuenta = entrada.nextInt();
-           
-        if (cuenta == 1){
-            
-        }
         
-        CuentaBancaria misAhorros = new CuentaBancaria(1, "Jorge");
+        CuentaBancaria misAhorros = new CuentaBancaria(1, "Jorge", "Morales");
+        //CuentaBancaria fechaDeNacimiento = new cliente ("17 de Agosto de 1997");
         System.out.println("Saldo: " + misAhorros.getSaldo());
-        misAhorros.depositar(1000.0);
+        misAhorros.Depositar(1000.0);
         System.out.println("Saldo: " + misAhorros.getSaldo());
-        misAhorros.retirar(200.0);
+        misAhorros.Retirar(200.0);
         System.out.println("Saldo: " + misAhorros.getSaldo());
-        misAhorros.depositar(300.0);
-        misAhorros.depositar(400.0);
-        misAhorros.retirar(500.0);
+        misAhorros.Depositar(300.0);
+        misAhorros.Depositar(400.0);
+        misAhorros.Retirar(500.0);
+        System.out.println("Saldo: " + misAhorros.getSaldo());
     }
     
 }

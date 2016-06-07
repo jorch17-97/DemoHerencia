@@ -9,37 +9,43 @@ package demoherencia;
  *
  * @author Jorge Antonio
  */
-public class CuentaDeCheque {
-    private int numeroDeCuenta;
-    private String cliente;
-    private double saldo;
-    private int contador;
+public class CuentaDeCheque extends CuentaBancaria {
+    private int chequesEmitidos;
+    private int chequesRebotados;
     
-    public CuentaDeCheque (int numeroDeCuenta, String cliente) {
-        this.numeroDeCuenta = numeroDeCuenta;
-        this.cliente = cliente;
-        this.saldo = 2000.0;
-        this.contador = 0;
+    public CuentaDeCheque (int numeroDeCuenta, String nombre, String apellido) {
+        super(numeroDeCuenta, nombre, apellido);
+        super.Depositar(2000.0);
+        chequesEmitidos = 0;
+        chequesRebotados = 0;
     }
     
-    public double getSaldo() {
-    return saldo;
-    }
     
-    public boolean depositar(double cantidad) {
-        boolean siDepositar = false;
-        if (cantidad > 0.0) {
-            siDepositar = true;
-        }
-        return siDepositar;
-    }
     
     public boolean Retirar(double cantidad) {
-        boolean siRetirar = false;
-        if (cantidad < this.saldo) {
-            siRetirar = true;
+        boolean seEfectuoRetiro = super.Retirar(cantidad);
+        if (seEfectuoRetiro == true) {
+            chequesEmitidos = chequesEmitidos + 1;
         }
-        return siRetirar;
+        else {
+            chequesRebotados ++;
+        }
+        return seEfectuoRetiro;
+    }
+    public double calcularInteresPorChequesEmitidos() {
+        double comision = (chequesEmitidos - 5.0) * 5.0;
+        return comision;
     }
     
+    public double calcularComisionPorChequesRebotados() {
+        return chequesRebotados * 100.0;
+    }
+    /*
+    public void realizarCorteMensual() {
+        super.retirar(calcularComisionPorChequesEmitidos());
+        super.retirar(calcualarComisionPorChequesRebotados());
+        chequesEmitidos = 0;
+        chequesRebotados = 0;
+    }
+    */
 }
